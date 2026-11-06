@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Contact Dominic Isaboke.">
+  <title>Dominic Isaboke | Contacts</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="site">
+    <header class="site-header">
+      <a class="brand" href="index.html">Dominic Isaboke</a>
+      <nav aria-label="Main menu">
+        <ul class="menu">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="experience.html">Personal Experience</a></li>
+          <li><a href="contacts.html" aria-current="page">Contacts</a></li>
+          <li><a href="hobbies.html">Hobbies</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main class="sheet content">
+      <section class="block">
+        <h1>Contacts</h1>
+        <p class="lede">For bookings, projects or questions, please get in touch.</p>
+      </section>
+
+      <dl class="contact-list">
+        <div><dt>Name</dt><dd>Dominic Isaboke</dd></div>
+        <div><dt>Phone</dt><dd><a href="tel:+254705151490">+254 705 151 490</a></dd></div>
+        <div><dt>Email</dt><dd><a href="mailto:isabokedominicmartin@gmail.com">isabokedominicmartin@gmail.com</a></dd></div>
+        <div><dt>Location</dt><dd>Mombasa &amp; Kisii, Kenya</dd></div>
+      </dl>
+
+      <div class="email-panel">
+        <a class="email-btn" href="mailto:isabokedominicmartin@gmail.com?subject=Hello%20Dominic">Email me</a>
+      </div>
+
+      <hr class="teal-line">
+
+      <section class="block">
+        <h2 class="contact-heading">Send Me a Message</h2>
+        <p>Fill in the form below to prepare a message in your email application.</p>
+        <form class="message-form" id="messageForm">
+          <label for="message-name">Enter your Name:</label>
+          <input type="text" id="message-name" name="name" placeholder="Enter your full name" autocomplete="name" required>
+
+          <label for="message-email">E-mail address:</label>
+          <input type="email" id="message-email" name="email" placeholder="Enter your email address" autocomplete="email" required>
+
+          <label for="message-subject">Message Subject:</label>
+          <input type="text" id="message-subject" name="subject" placeholder="Enter message subject" required>
+
+          <label for="message-body">Enter your Message:</label>
+          <textarea id="message-body" name="message" placeholder="Write your message here..." required></textarea>
+
+          <div class="copy-row">
+            <input type="checkbox" id="message-copy" name="copy">
+            <label for="message-copy">E-mail a copy of this message to your own address.</label>
+          </div>
+
+          <button type="submit" class="send-btn">Send Message</button>
+          <p class="form-note" id="formNote" role="status" aria-live="polite"></p>
+        </form>
+      </section>
+    </main>
+
+    <footer>&copy; 2026 Dominic Isaboke &middot; Mombasa &amp; Kisii, Kenya</footer>
+  </div>
+
+  <script>
+    document.getElementById('messageForm').addEventListener('submit', function (event) {
+      event.preventDefault();
+      var to = 'isabokedominicmartin@gmail.com';
+      var name = document.getElementById('message-name').value.trim();
+      var email = document.getElementById('message-email').value.trim();
+      var subject = document.getElementById('message-subject').value.trim();
+      var message = document.getElementById('message-body').value.trim();
+      var copy = document.getElementById('message-copy').checked;
+      var body = message + '\n\nFrom: ' + name + ' <' + email + '>';
+      var mailto = 'mailto:' + to +
+        '?subject=' + encodeURIComponent(subject) +
+        (copy ? '&cc=' + encodeURIComponent(email) : '') +
+        '&body=' + encodeURIComponent(body);
+
+      document.getElementById('formNote').textContent =
+        'Your email application should open with the message ready. Press send there to deliver it.';
+      window.location.href = mailto;
+    });
+  </script>
+</body>
+</html>
